@@ -15,6 +15,6 @@ public class AlgorithmContext {
     public void sortArray(int[] arr){
         System.out.println("Sorting using " + algorithm.getName() + " !");
         double result = algorithm.measureSort(arr);
-        System.out.println("It took " + result + " m/s to sort this array with the " + algorithm.getName() + " method!" + "\n");
+        System.out.println("It took " + result + " ms to sort this array with the " + algorithm.getName() + " method!" + "\n");
     }
 }

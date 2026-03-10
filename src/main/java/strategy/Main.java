@@ -7,12 +7,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter the size of the array: ");
-        int size = scanner.nextInt();
+        int[] smallData = new Random().ints(30, 1, 100000).toArray();
+        int[] largeData = new Random().ints(100000, 1, 100000).toArray();
 
-        int[] data = new Random().ints(size, 1, 100000).toArray();
-
-        System.out.println("\nSelect Sorting Algorithm:");
+        System.out.println("Select Sorting Algorithm:");
         System.out.println("1. Bubble Sort");
         System.out.println("2. Quick Sort");
         System.out.println("3. Selection Sort");
@@ -32,12 +30,15 @@ public class Main {
                 context.setAlgorithm(new SelectionSort());
                 break;
             default:
-                System.out.println("Invalid choice. Defaulting to QuickSort.");
-                context.setAlgorithm(new QuickSort());
-                break;
+                System.out.println("Invalid choice.");
+                return;
         }
 
-        context.sortArray(data);
+        System.out.println("\n--- Testing Small Array (30 elements) ---");
+        context.sortArray(smallData.clone());
+
+        System.out.println("--- Testing Large Array (100,000 elements) ---");
+        context.sortArray(largeData.clone());
 
         scanner.close();
     }

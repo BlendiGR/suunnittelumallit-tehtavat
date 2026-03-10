@@ -5,12 +5,23 @@ public class Main {
         Handler general = new GeneralFeedBackHandler();
         Handler contact = new ContactRequestHandler();
         Handler compensation = new CompensationClaimHandler();
+        Handler development = new DevelopmentSuggestionHandler();
 
         general.setNextHandler(contact);
-        contact.setNextHandler(compensation);
+        contact.setNextHandler(development);
+        development.setNextHandler(compensation);
 
-        //
-        Feedback myFeedback = new Feedback("I LOST ALL OF MY MONEY BECAUSE OF YUOU!!!!", "compensation");
-        general.handleFeedback(myFeedback);
+        Feedback f1 = new Feedback(FeedbackType.COMPENSATION, "Paid but i never received the damn product.", "user1@123123.com");
+        Feedback f2 = new Feedback(FeedbackType.DEVELOPMENT, "Add dark mode to this app please", "user2@ddawdaw.com");
+        Feedback f3 = new Feedback(FeedbackType.CONTACT, "Need help with login", "user3@fwefwefwe.com");
+
+        System.out.println("Processing Feedback 1:");
+        general.handleFeedback(f1);
+
+        System.out.println("\nProcessing Feedback 2:");
+        general.handleFeedback(f2);
+
+        System.out.println("\nProcessing Feedback 3:");
+        general.handleFeedback(f3);
     }
 }

@@ -2,18 +2,24 @@ package chain_of_responsibility;
 
 public class Feedback {
     private String message;
-    private String feedBackType;
+    private String senderEmail;
+    private FeedbackType type;
 
-    public Feedback(String message, String feedBackType){
+    public Feedback(FeedbackType type, String message, String senderEmail) {
+        this.type = type;
         this.message = message;
-        this.feedBackType = feedBackType;
+        this.senderEmail = senderEmail;
     }
 
-    public String getFeedBackType(){
-        return feedBackType;
+    public FeedbackType getType() {
+        return type;
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return message;
+    }
+
+    public String getSenderEmail() {
+        return senderEmail;
     }
 }
